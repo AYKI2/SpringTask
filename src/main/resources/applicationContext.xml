@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:application.properties"/>
+    <bean id="fantasy"
+    class="org.example.FantasyMovie">
+        <constructor-arg name="title" value="${fantasy.title}"/>
+    </bean>
+    <bean id="drama"
+          class="org.example.DramaMovie">
+        <constructor-arg name="title" value="${drama.title}"/>
+    </bean>
+    <bean id="comedy"
+          class="org.example.ComedyMovie">
+        <constructor-arg name="title" value="${comedy.title}"/>
+    </bean>
+    <bean id="action"
+          class="org.example.ActionMovie">
+        <constructor-arg name="title" value="${action.title}"/>
+    </bean>
+    <bean id="netflix"
+    class="org.example.Netflix">
+        <property name="movie">
+            <list>
+                <ref bean="fantasy"></ref>
+                <ref bean="comedy"></ref>
+                <ref bean="action"></ref>
+                <ref bean="drama"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>
